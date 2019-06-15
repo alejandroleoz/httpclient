@@ -8,12 +8,13 @@ import java.util.Objects;
 
 public class Request {
 
- private String url;
- private Method method = Method.GET;
- private String contentType = "text/plain";
- private Map<String, Serializable> parameters = Collections.emptyMap();
- private Map<String, String> headers = Collections.emptyMap();
- private String payload = null;
+    private String url;
+    private Method method = Method.GET;
+    private String contentType = "text/plain";
+    private String accept = "*/*";
+    private Map<String, Serializable> parameters = Collections.emptyMap();
+    private Map<String, String> headers = Collections.emptyMap();
+    private String payload = null;
 
     public enum Method {
         GET,
@@ -36,6 +37,11 @@ public class Request {
 
     public Request withContentType(String contentType) {
         this.contentType = contentType;
+        return this;
+    }
+
+    public Request withAcceptHeader(String accept) {
+        this.accept = accept;
         return this;
     }
 
@@ -68,6 +74,10 @@ public class Request {
 
     public String getContentType() {
         return contentType;
+    }
+
+    public String getAccept() {
+        return accept;
     }
 
     public Map<String, Serializable> getParameters() {

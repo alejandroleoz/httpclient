@@ -38,6 +38,9 @@ public class HTTPClient {
         // set default content type
         con.setRequestProperty("Content-Type", request.getContentType());
 
+        // set default accept type
+        con.setRequestProperty("Accept", request.getAccept());
+
         // write headers if any
         if (Objects.nonNull(headers) && !headers.isEmpty()) {
             headers.forEach((headerName, value) -> {
